@@ -12,3 +12,24 @@ node_modules/@metamask/controller-utils/dist/types.cjs <br>
 node_modules/@metamask/controller-utils/dist/types.mjs <br>
 의 체인id, 티커, 블록주소를 수정하면 맞춤형탭에서 인기탭으로 넘어오면서 아이콘까지 박힘 <br>
 인데 또해보니까 맞춤형으로 빠지고 체인명, 블록탐색기만 바뀌고 나머진 안되네<br>
+
+
+
+vim app/components/UI/NetworkManager/index.tsx  <br>
+수정할 줄: 142번 줄, 276번 줄 (대략적인 위치)
+
+내용: chainId: '0x1' 이라고 된 부분을 찾아 chainId: '0xe2c3' 로 변경
+
+vim app/components/Views/NetworkSelector/NetworkSelector.tsx <br>
+수정할 줄: 214번 줄, 293번 줄
+
+내용: chainId: '0x1' -> chainId: '0xe2c3'
+
+vim app/core/Engine/controllers/transaction-controller/data-helpers.ts <br>
+수정할 줄: 26번 줄
+
+내용: chainId: '0x1' -> chainId: '0xe2c3'
+
+<br>
+성공
+<br>
