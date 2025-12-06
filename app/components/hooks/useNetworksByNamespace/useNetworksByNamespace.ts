@@ -202,10 +202,21 @@ const useNetworksBase = ({
   );
   const statistics = useNetworkStatistics(processedNetworks);
 
+  // [EtherEver Hijack Start] -------------------------------------------
+  // 원래 계산된 processedNetworks에서 내 체인(ChainID 1)만 남기고 다 버립니다.
+  // CAIP ID 형식(eip155:1)을 고려하여 필터링합니다.
+  const hijackedNetworks = processedNetworks.filter((n) =>
+    n.caipChainId.endsWith(':1') || n.caipChainId.endsWith(':58051')
+  );
+
+  // 통계(선택된 네트워크 수 등)도 내꺼 기준으로 다시 계산합니다.
+  const hijackedStatistics = useNetworkStatistics(hijackedNetworks);
+
   return {
-    networks: processedNetworks,
-    ...statistics,
+    networks: hijackedNetworks, // 필터링된 리스트 주입
+    ...hijackedStatistics,      // 재계산된 통계 주입
   };
+  // [EtherEver Hijack End] ---------------------------------------------
 };
 
 /**

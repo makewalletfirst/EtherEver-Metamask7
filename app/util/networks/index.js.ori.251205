@@ -81,6 +81,90 @@ export const NetworkList = {
     blockExplorerUrl: MAINNET_BLOCK_EXPLORER,
     isTestNet: false,
   },
+  [LINEA_MAINNET]: {
+    name: 'Linea Main Network',
+    shortName: 'Linea',
+    networkId: 59144,
+    chainId: toHex('59144'),
+    ticker: 'ETH',
+    // Third party color
+    // eslint-disable-next-line @metamask/design-tokens/color-no-hex
+    color: '#121212',
+    networkType: 'linea-mainnet',
+    imageSource: networksWithImages['LINEA-MAINNET'],
+    blockExplorerUrl: LINEA_MAINNET_BLOCK_EXPLORER,
+    isTestNet: false,
+  },
+  [BASE_MAINNET]: {
+    name: 'Base Main Network',
+    shortName: 'Base',
+    networkId: 8453,
+    chainId: toHex('8453'),
+    ticker: 'ETH',
+    // Third party color
+    // eslint-disable-next-line @metamask/design-tokens/color-no-hex
+    color: '#0052FE',
+    networkType: 'base-mainnet',
+    imageSource: networksWithImages.BASE,
+    blockExplorerUrl: BASE_MAINNET_BLOCK_EXPLORER,
+    isTestNet: false,
+  },
+  [SEPOLIA]: {
+    name: 'Sepolia',
+    shortName: 'Sepolia',
+    networkId: 11155111,
+    chainId: toHex('11155111'),
+    ticker: 'SepoliaETH',
+    // Third party color
+    // eslint-disable-next-line @metamask/design-tokens/color-no-hex
+    color: '#cfb5f0',
+    networkType: 'sepolia',
+    imageSource: networksWithImages.SEPOLIA,
+    blockExplorerUrl: SEPOLIA_BLOCK_EXPLORER,
+    isTestNet: true,
+  },
+  [LINEA_SEPOLIA]: {
+    name: 'Linea Sepolia',
+    shortName: 'Linea Sepolia',
+    networkId: 59141,
+    chainId: toHex('59141'),
+    ticker: 'LineaETH',
+    // Third party color
+    // eslint-disable-next-line @metamask/design-tokens/color-no-hex
+    color: '#61dfff',
+    networkType: 'linea-sepolia',
+    imageSource: networksWithImages['LINEA-SEPOLIA'],
+    blockExplorerUrl: LINEA_SEPOLIA_BLOCK_EXPLORER,
+    isTestNet: true,
+  },
+  [MEGAETH_TESTNET]: {
+    name: 'Mega Testnet',
+    shortName: 'Mega Testnet',
+    networkId: 6342,
+    chainId: toHex('6342'),
+    ticker: 'MegaETH',
+    // Third party color
+    // eslint-disable-next-line @metamask/design-tokens/color-no-hex
+    color: '#61dfff',
+    networkType: 'megaeth-testnet',
+    imageSource: networksWithImages['MEGAETH-TESTNET'],
+    blockExplorerUrl: BlockExplorerUrl['megaeth-testnet'],
+    isTestNet: true,
+  },
+  [MONAD_TESTNET]: {
+    name: 'Monad Testnet',
+    shortName: 'Monad Testnet',
+    networkId: 10143,
+    chainId: toHex('10143'),
+    ticker: 'MON',
+    // Third party color
+    // eslint-disable-next-line @metamask/design-tokens/color-no-hex
+    color: '#61dfff',
+    networkType: 'monad-testnet',
+    imageSource: networksWithImages['MONAD-TESTNET'],
+    blockExplorerUrl: BlockExplorerUrl['monad-testnet'],
+    isTestNet: true,
+  },
   [RPC]: {
     name: 'Private Network',
     shortName: 'Private',
@@ -95,12 +179,25 @@ const NetworkListKeys = Object.keys(NetworkList);
 
 export const BLOCKAID_SUPPORTED_NETWORK_NAMES = {
   [NETWORKS_CHAIN_ID.MAINNET]: 'Ethereum Mainnet',
+  [NETWORKS_CHAIN_ID.BSC]: 'Binance Smart Chain',
+  [NETWORKS_CHAIN_ID.BASE]: 'Base',
+  [NETWORKS_CHAIN_ID.OPTIMISM]: 'Optimism',
+  [NETWORKS_CHAIN_ID.POLYGON]: 'Polygon',
+  [NETWORKS_CHAIN_ID.ARBITRUM]: 'Arbitrum',
+  [NETWORKS_CHAIN_ID.LINEA_MAINNET]: 'Linea',
+  [NETWORKS_CHAIN_ID.SEPOLIA]: 'Sepolia',
+  [NETWORKS_CHAIN_ID.OPBNB]: 'opBNB',
+  [NETWORKS_CHAIN_ID.ZKSYNC_ERA]: 'zkSync Era Mainnet',
+  [NETWORKS_CHAIN_ID.SCROLL]: 'Scroll',
+  [NETWORKS_CHAIN_ID.BERACHAIN]: 'Berachain',
+  [NETWORKS_CHAIN_ID.METACHAIN_ONE]: 'Metachain One Mainnet',
   [NETWORKS_CHAIN_ID.SEI]: 'Sei Mainnet',
 };
 
 export default NetworkList;
 
-export const getAllNetworks = () => ['mainnet'];
+export const getAllNetworks = () =>
+  NetworkListKeys.filter((name) => name !== RPC);
 
 export const getMainnetNetworks = () =>
   getAllNetworks().filter((name) => !NetworkList[name].isTestNet);
@@ -156,7 +253,7 @@ export const isMainnetByChainId = (chainId) =>
   getDecimalChainId(String(chainId)) === String(58051);
 
 export const isLineaMainnetByChainId = (chainId) =>
-  getDecimalChainId(String(chainId)) === String(59145);
+  getDecimalChainId(String(chainId)) === String(59144);
 
 export const isMultiLayerFeeNetwork = (chainId) =>
   chainId === NETWORKS_CHAIN_ID.OPTIMISM;
@@ -180,6 +277,15 @@ export const getTestNetImage = (networkType) => {
 export const getTestNetImageByChainId = (chainId) => {
   if (NETWORKS_CHAIN_ID.SEPOLIA === chainId) {
     return networksWithImages?.SEPOLIA;
+  }
+  if (NETWORKS_CHAIN_ID.LINEA_GOERLI === chainId) {
+    return networksWithImages?.['LINEA-GOERLI'];
+  }
+  if (NETWORKS_CHAIN_ID.LINEA_SEPOLIA === chainId) {
+    return networksWithImages?.['LINEA-SEPOLIA'];
+  }
+  if (NETWORKS_CHAIN_ID.MEGAETH_TESTNET === chainId) {
+    return networksWithImages?.['MEGAETH-TESTNET'];
   }
   if (NETWORKS_CHAIN_ID.MONAD_TESTNET === chainId) {
     return networksWithImages?.['MONAD-TESTNET'];
@@ -569,6 +675,12 @@ export const isPermissionsSettingsV1Enabled =
 // The whitelisted network names for the given chain IDs to prevent showing warnings on Network Settings.
 export const WHILELIST_NETWORK_NAME = {
   [ChainId.mainnet]: 'Mainnet',
+  [ChainId['linea-mainnet']]: 'Linea Mainnet',
+  [ChainId['megaeth-testnet']]: 'Mega Testnet',
+  [ChainId['monad-testnet']]: 'Monad Testnet',
+  [NETWORKS_CHAIN_ID.SEI]: 'Sei Mainnet',
+  [NETWORKS_CHAIN_ID.HYPER_EVM]: 'HyperEVM',
+  [NETWORKS_CHAIN_ID.MEGAETH_MAINNET]: 'MegaEth',
 };
 
 // Whitelisted symbols for specific chain IDs to prevent showing warnings on Network Settings.

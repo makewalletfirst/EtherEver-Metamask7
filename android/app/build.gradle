@@ -218,7 +218,7 @@ android {
 
 	  signingConfigs {
       mainProd {
-	storeFile file('/root/betamask/android/keystores/release.keystore')
+	storeFile file('/root/metamask-mobile/android/keystores/release.keystore')
         storePassword "dmswk123"
         keyAlias "my-key-alias"
         keyPassword "dmswk123"

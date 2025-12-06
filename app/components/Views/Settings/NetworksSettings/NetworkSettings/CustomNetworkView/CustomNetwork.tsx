@@ -64,7 +64,7 @@ const CustomNetwork = ({
   );
 
   // Apply blacklist filter to the network list
-  const baseNetworkList = customNetworksList ?? PopularList;
+  const baseNetworkList = customNetworksList ?? [];
   const filteredNetworkList = getFilteredPopularNetworks(
     blacklistedChainIds,
     baseNetworkList,

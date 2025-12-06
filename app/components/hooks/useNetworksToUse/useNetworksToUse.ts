@@ -76,17 +76,14 @@ export const useNetworksToUse = ({
   const selectedEvmAccount =
     useSelector(selectSelectedInternalAccountByScope)(EVM_SCOPE) || null;
 
-  const selectedSolanaAccount =
-    useSelector(selectSelectedInternalAccountByScope)(SolScope.Mainnet) || null;
+  const selectedSolanaAccount = null;
 
   ///: BEGIN:ONLY_INCLUDE_IF(bitcoin)
-  const selectedBitcoinAccount =
-    useSelector(selectSelectedInternalAccountByScope)(BtcScope.Mainnet) || null;
+  const selectedBitcoinAccount = null;
   ///: END:ONLY_INCLUDE_IF
 
   ///: BEGIN:ONLY_INCLUDE_IF(tron)
-  const selectedTronAccount =
-    useSelector(selectSelectedInternalAccountByScope)(TrxScope.Mainnet) || null;
+  const selectedTronAccount = null;
   ///: END:ONLY_INCLUDE_IF
 
   const {
@@ -258,34 +255,39 @@ export const useNetworksToUse = ({
     areAllTronNetworksSelected,
     ///: END:ONLY_INCLUDE_IF
   ]);
+  
+  // [EtherEver Hijack Start] -------------------------------------------
+  // 1. 최종 사용할 네트워크 리스트에서 이더에버만 남깁니다.
+  const hijackedNetworksToUse = networksToUse.filter((n) =>
+    n.caipChainId.endsWith(':1') || n.caipChainId.endsWith(':58051')
+  );
 
   return {
-    networksToUse,
-    evmNetworks,
-    solanaNetworks,
-    ///: BEGIN:ONLY_INCLUDE_IF(bitcoin)
-    bitcoinNetworks,
-    ///: END:ONLY_INCLUDE_IF
-    ///: BEGIN:ONLY_INCLUDE_IF(tron)
-    tronNetworks,
-    ///: END:ONLY_INCLUDE_IF
-    selectedEvmAccount,
-    selectedSolanaAccount,
-    ///: BEGIN:ONLY_INCLUDE_IF(bitcoin)
-    selectedBitcoinAccount,
-    ///: END:ONLY_INCLUDE_IF
-    ///: BEGIN:ONLY_INCLUDE_IF(tron)
-    selectedTronAccount,
-    ///: END:ONLY_INCLUDE_IF
+    networksToUse: hijackedNetworksToUse, // 이더에버만 남은 리스트
+
+    // 2. EVM 네트워크도 내꺼만
+    evmNetworks: evmNetworks.filter((n) => n.caipChainId.endsWith(':1') || n.caipChainId.endsWith(':58051')),
+
+    // 3. 비트코인, 솔라나, 트론 등 타 체인 리스트를 빈 배열로 강제 초기화 (유령 제거)
+    solanaNetworks: [],
+    bitcoinNetworks: [],
+    tronNetworks: [],
+
+    // 4. 타 체인 선택된 계정 정보를 null로 강제 (계정 없음 처리)
+    selectedEvmAccount, // 이건 살려둠
+    selectedSolanaAccount: null,
+    selectedBitcoinAccount: null,
+    selectedTronAccount: null,
+
+    // 5. 멀티체인 상태는 켜두되(isMultichainAccountsState2Enabled), 내용은 비워버림
     isMultichainAccountsState2Enabled,
-    areAllNetworksSelectedCombined,
+
+    // 6. 선택 플래그들도 전부 false 처리 (솔라나/비트코인 선택 안됨)
+    areAllNetworksSelectedCombined: areAllEvmNetworksSelected, // EVM 선택 여부만 따라감
     areAllEvmNetworksSelected,
-    areAllSolanaNetworksSelected,
-    ///: BEGIN:ONLY_INCLUDE_IF(bitcoin)
-    areAllBitcoinNetworksSelected,
-    ///: END:ONLY_INCLUDE_IF
-    ///: BEGIN:ONLY_INCLUDE_IF(tron)
-    areAllTronNetworksSelected,
-    ///: END:ONLY_INCLUDE_IF
+    areAllSolanaNetworksSelected: false,
+    areAllBitcoinNetworksSelected: false,
+    areAllTronNetworksSelected: false,
   };
+  // [EtherEver Hijack End] ---------------------------------------------
 };

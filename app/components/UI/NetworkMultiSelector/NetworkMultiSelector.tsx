@@ -49,7 +49,7 @@ const CUSTOM_NETWORK_PROPS = {
   switchTab: undefined,
   shouldNetworkSwitchPopToWallet: false,
   showCompletionMessage: false,
-  showPopularNetworkModal: true,
+  showPopularNetworkModal: false,
   allowNetworkSwitch: false,
   hideWarningIcons: true,
   listHeader: strings('networks.additional_networks'),

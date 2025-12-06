@@ -44,7 +44,7 @@ export const NETWORKS_CHAIN_ID = {
   LINEA_GOERLI: toHex('59140'),
   LINEA_SEPOLIA: toHex('59141'),
   GOERLI: toHex('5'),
-  LINEA_MAINNET: toHex('59144'),
+  LINEA_MAINNET: toHex('59145'),
   ZKSYNC_ERA: toHex('324'),
   LOCALHOST: toHex('1337'),
   ARBITRUM_GOERLI: toHex('421613'),

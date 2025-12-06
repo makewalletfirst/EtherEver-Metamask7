@@ -97,7 +97,7 @@ const formatNetworkRpcUrl = (rpcUrl) => {
   return stripProtocol(stripKeyFromInfuraUrl(rpcUrl));
 };
 
-const allNetworks = getAllNetworks();
+const allNetworks = ['mainnet'];
 
 const InfuraKey = process.env.MM_INFURA_PROJECT_ID;
 const infuraProjectId = InfuraKey === 'null' ? '' : InfuraKey;
@@ -506,7 +506,7 @@ export class NetworkSettings extends PureComponent {
     if (checkCustomNetworks.length > 0) {
       return checkCustomNetworks;
     }
-    const defaultNetworks = getAllNetworks().map((item) => Networks[item]);
+    const defaultNetworks = ['mainnet'].map((item) => Networks[item]);
     const checkDefaultNetworks = defaultNetworks.filter(
       (item) => Number(item.rpcUrl) === rpcUrl,
     );

@@ -22,9 +22,10 @@ export const selectedNetworkControllerInit: ControllerInitFunction<
 
     // @ts-expect-error: `SelectedNetworkController` does not accept partial
     // state.
-    state: persistedState.SelectedNetworkController || {
+    state: {
       domains: {},
       activeDappNetwork: null,
+      selectedNetworkClientId: 'mainnet',
     },
 
     domainProxyMap: new DomainProxyMap(),
