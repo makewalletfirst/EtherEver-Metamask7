@@ -24,19 +24,5 @@ export const NETWORK_MULTI_SELECTOR_TEST_IDS = {
 } as const;
 
 export enum NetworkToCaipChainId {
-  SOLANA = 'solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp',
   ETHEREUM = 'eip155:1',
-  LINEA = 'eip155:59144',
-  AVALANCHE = 'eip155:43114',
-  BNB = 'eip155:56',
-  ZKSYNC_ERA = 'eip155:324',
-  BASE = 'eip155:8453',
-  OPTIMISM = 'eip155:10',
-  POLYGON = 'eip155:137',
-  PALM = 'eip155:11297108109',
-  ARBITRUM = 'eip155:42161',
-  LOCALHOST = 'eip155:1337',
-  ETHEREUM_SEPOLIA = 'eip155:11155111',
-  LINEA_SEPOLIA = 'eip155:59141',
-  SEI = 'eip155:1329',
 }

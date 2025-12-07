@@ -71,7 +71,7 @@ const NetworkMultiSelector = ({
   });
 
   const {
-    networksToUse: originalNetworksToUse,
+    networksToUse,
     areAllNetworksSelectedCombined,
     isMultichainAccountsState2Enabled,
   } = useNetworksToUse({
@@ -79,20 +79,19 @@ const NetworkMultiSelector = ({
     networkType: NetworkType.Popular,
     areAllNetworksSelected,
   });
-  
-  const networksToUse = originalNetworksToUse.filter(
-      (network) => network.caipChainId === 'eip155:58051'
-  );
 
   const { selectPopularNetwork, selectAllPopularNetworks } =
     useNetworkSelection({
       networks: networksToUse,
     });
 
-  // ★ 강제 선택: 무조건 내 체인 ID(58051)가 선택된 것으로 인식시킴
   const selectedChainIds = useMemo(
-    () => ['eip155:58051'] as CaipChainId[], 
-    [],
+    () =>
+      Object.keys(enabledNetworksByNamespace[namespace] || {}).filter(
+        (chainId) =>
+          enabledNetworksByNamespace[namespace]?.[chainId as CaipChainId],
+      ) as CaipChainId[],
+    [enabledNetworksByNamespace, namespace],
   );
 
   const showNetworkModal = useCallback(
@@ -177,7 +176,27 @@ const NetworkMultiSelector = ({
     [selectPopularNetwork, dismissModal],
   );
 
-  const selectAllNetworksComponent = null;
+  const selectAllNetworksComponent = useMemo(
+    () => (
+      <Cell
+        testID={
+          areAllNetworksSelectedCombined
+            ? NETWORK_MULTI_SELECTOR_TEST_IDS.SELECT_ALL_POPULAR_NETWORKS_SELECTED
+            : NETWORK_MULTI_SELECTOR_TEST_IDS.SELECT_ALL_POPULAR_NETWORKS_NOT_SELECTED
+        }
+        isSelected={areAllNetworksSelectedCombined}
+        variant={CellVariant.Select}
+        title={strings('networks.all_popular_networks')}
+        onPress={onSelectAllPopularNetworks}
+        avatarProps={{
+          variant: AvatarVariant.Icon,
+          name: IconName.Global,
+          size: AvatarSize.Sm,
+        }}
+      />
+    ),
+    [areAllNetworksSelectedCombined, onSelectAllPopularNetworks],
+  );
 
   return (
     <ScrollView

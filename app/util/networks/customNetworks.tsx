@@ -19,10 +19,7 @@ const infuraProjectId = InfuraKey === 'null' ? '' : InfuraKey;
 export const QUICKNODE_ENDPOINT_URLS_BY_INFURA_NETWORK_NAME = {
   'ethereum-mainnet': () => process.env.QUICKNODE_MAINNET_URL,
   'linea-mainnet': () => process.env.QUICKNODE_LINEA_MAINNET_URL,
-  'arbitrum-mainnet': () => process.env.QUICKNODE_ARBITRUM_URL,
-  'avalanche-mainnet': () => process.env.QUICKNODE_AVALANCHE_URL,
-  'optimism-mainnet': () => process.env.QUICKNODE_OPTIMISM_URL,
-  'polygon-mainnet': () => process.env.QUICKNODE_POLYGON_URL,
+  'arbitrum-mainnet': () => process.env.QUICKNODE_ARBITRUM_URL,                                     'avalanche-mainnet': () => process.env.QUICKNODE_AVALANCHE_URL,                                   'optimism-mainnet': () => process.env.QUICKNODE_OPTIMISM_URL,                                     'polygon-mainnet': () => process.env.QUICKNODE_POLYGON_URL,
   'base-mainnet': () => process.env.QUICKNODE_BASE_URL,
   'bsc-mainnet': () => process.env.QUICKNODE_BSC_URL,
   'sei-mainnet': () => process.env.QUICKNODE_SEI_URL,
@@ -38,7 +35,23 @@ export function getFailoverUrlsForInfuraNetwork(
   return [];
 }
 
-export const PopularList = [];
+// 41행 근처 수정
+export const PopularList = [
+  {
+    chainId: toHex('58051'), // 10진수 58051을 16진수로 변환하여 저장
+    nickname: 'EtherEver',   // 화면에 표시될 이름
+    rpcUrl: 'https://rpc.etherever.com', // ★ 실제 RPC 주소 입력 필수
+    ticker: 'EVER',          // 코인 심볼 (ETH 또는 EVER)
+    rpcPrefs: {
+      blockExplorerUrl: 'https://scan.etherever.com', // ★ 실제 익스플로러 주소
+      imageUrl: 'https://etherever.com/logo.png', // 로고 URL (없으면 지워도 됨)
+      // 앱 내장 이미지를 쓰고 싶다면 아래 주석 해제 후 위 imageUrl 삭제
+      // imageSource: require('../../images/eth_logo.png'), 
+    },
+    // 기본적으로 메인넷 취급
+    type: 'mainnet', 
+  },
+];
 
 /**
  * Filters the PopularList to exclude networks with blacklisted chain IDs.
@@ -194,75 +207,9 @@ export const UnpopularNetworkList = [
 ];
 
 export const NETWORK_CHAIN_ID: {
-  readonly FLARE_MAINNET: '0xe';
-  readonly SONGBIRD_TESTNET: '0x13';
-  readonly APECHAIN_TESTNET: '0x8157';
-  readonly APECHAIN_MAINNET: '0x8173';
-  readonly GRAVITY_ALPHA_MAINNET: '0x659';
-  readonly KAIA_MAINNET: '0x2019';
-  readonly KAIA_KAIROS_TESTNET: '0x3e9';
-  readonly SONEIUM_MAINNET: '0x74c';
-  readonly SONEIUM_MINATO_TESTNET: '0x79a';
-  readonly XRPLEVM_TESTNET: '0x161c28';
-  readonly SEI_MAINNET: '0x531';
-  readonly MONAD_MAINNET: '0x8f';
-  readonly MATCHAIN_MAINNET: '0x2ba';
-  readonly FLOW_MAINNET: '0x2eb';
-  readonly LENS: '0xe8';
-  readonly PLUME: '0x18232';
-  readonly GENESYS: '0x407b';
-  readonly KATANA: '0xb67d2';
-  readonly SOPHON: '0xc3b8';
-  readonly SOPHON_TESTNET: '0x1fa72e78';
-  readonly BERACHAIN: '0x138de';
-  readonly EDU: '0xa3c3';
-  readonly ABSTRACT: '0xab5';
-  readonly NOMINA: '0xa6';
-  readonly XRPLEVM: '0x15f900';
-  readonly FRAXTAL: '0xfc';
-  readonly XDC: '0x32';
-  readonly MEGAETH_MAINNET: '0x10e6';
-  readonly HEMI: '0xa867';
-  readonly LUKSO: '0x2a';
-  readonly INJECTIVE: '0x6f0';
-  readonly PLASMA: '0x2611';
-  readonly CRONOS: '0x19';
-  readonly HYPE: '0x3e7';
+  readonly ETHEREVER: '0xe2c3';
 } & typeof CHAIN_IDS = {
-  FLARE_MAINNET: '0xe',
-  SONGBIRD_TESTNET: '0x13',
-  APECHAIN_TESTNET: '0x8157',
-  APECHAIN_MAINNET: '0x8173',
-  GRAVITY_ALPHA_MAINNET: '0x659',
-  KAIA_MAINNET: '0x2019',
-  KAIA_KAIROS_TESTNET: '0x3e9',
-  SONEIUM_MAINNET: '0x74c',
-  SONEIUM_MINATO_TESTNET: '0x79a',
-  XRPLEVM_TESTNET: '0x161c28',
-  SEI_MAINNET: '0x531',
-  MONAD_MAINNET: '0x8f',
-  MATCHAIN_MAINNET: '0x2ba',
-  FLOW_MAINNET: '0x2eb',
-  LENS: '0xe8',
-  PLUME: '0x18232',
-  GENESYS: '0x407b',
-  KATANA: '0xb67d2',
-  SOPHON: '0xc3b8',
-  SOPHON_TESTNET: '0x1fa72e78',
-  BERACHAIN: '0x138de',
-  EDU: '0xa3c3',
-  ABSTRACT: '0xab5',
-  NOMINA: '0xa6',
-  XRPLEVM: '0x15f900',
-  FRAXTAL: '0xfc',
-  XDC: '0x32',
-  MEGAETH_MAINNET: '0x10e6',
-  HEMI: '0xa867',
-  LUKSO: '0x2a',
-  INJECTIVE: '0x6f0',
-  PLASMA: '0x2611',
-  CRONOS: '0x19',
-  HYPE: '0x3e7',
+  ETHERVER: '0xe2ce',
   ...CHAIN_IDS,
 };
 
