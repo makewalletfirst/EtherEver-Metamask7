@@ -8416,21 +8416,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@metamask/gator-permissions-controller@npm:^0.3.0":
-  version: 0.3.0
-  resolution: "@metamask/gator-permissions-controller@npm:0.3.0"
+"@metamask/gator-permissions-controller@npm:^0.7.0":
+  version: 0.7.0
+  resolution: "@metamask/gator-permissions-controller@npm:0.7.0"
   dependencies:
     "@metamask/7715-permission-types": "npm:^0.3.0"
     "@metamask/base-controller": "npm:^9.0.0"
     "@metamask/delegation-core": "npm:^0.2.0"
     "@metamask/delegation-deployments": "npm:^0.12.0"
     "@metamask/messenger": "npm:^0.3.0"
+    "@metamask/snaps-controllers": "npm:^14.0.1"
     "@metamask/snaps-sdk": "npm:^9.0.0"
     "@metamask/snaps-utils": "npm:^11.0.0"
+    "@metamask/transaction-controller": "npm:^62.3.1"
     "@metamask/utils": "npm:^11.8.1"
-  peerDependencies:
-    "@metamask/snaps-controllers": ^14.0.1
-  checksum: 10/aed9621db1ce8cad13181cf521d119c880bb2d62478bbe257ab02335fb5ab099ca9317b656c16b966d3054627519cf5daf80bc0ec3465a45884e3d47c93524f3
+  checksum: 10/99f6202b028aeeb4473ddcaa7c9500149ccd88218bc31d41b87c6eb0fccba7d85e4e753b7f84ec88af93b6637ac12d58e4a7d7859ea1f6b28fece64754ff9b29
   languageName: node
   linkType: hard
 
@@ -9400,6 +9400,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@metamask/remote-feature-flag-controller@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "@metamask/remote-feature-flag-controller@npm:3.0.0"
+  dependencies:
+    "@metamask/base-controller": "npm:^9.0.0"
+    "@metamask/controller-utils": "npm:^11.16.0"
+    "@metamask/messenger": "npm:^0.3.0"
+    "@metamask/utils": "npm:^11.8.1"
+    uuid: "npm:^8.3.2"
+  checksum: 10/50cb1f01ba96de56a79313477f84791fdf40ec1551ab2a7d609ae5097967df4798d3c12a9bfc9b580a3555cae69bf516e4f77aaddc0412a1ee00630b5af50b45
+  languageName: node
+  linkType: hard
+
 "@metamask/rpc-errors@npm:7.0.2":
   version: 7.0.2
   resolution: "@metamask/rpc-errors@npm:7.0.2"
@@ -9962,6 +9975,44 @@ __metadata:
     "@metamask/network-controller": ^25.0.0
     "@metamask/remote-feature-flag-controller": ^2.0.0
   checksum: 10/99bbf130b33d0c8f241d2d79006281a2ddc5910ee0b0d6efa806339533ed191430013c1eb29de082b89f002ee0cfd33626b39fbd9cff77a5fe79731e258f47d3
+  languageName: node
+  linkType: hard
+
+"@metamask/transaction-controller@npm:^62.3.1":
+  version: 62.5.0
+  resolution: "@metamask/transaction-controller@npm:62.5.0"
+  dependencies:
+    "@ethereumjs/common": "npm:^4.4.0"
+    "@ethereumjs/tx": "npm:^5.4.0"
+    "@ethereumjs/util": "npm:^9.1.0"
+    "@ethersproject/abi": "npm:^5.7.0"
+    "@ethersproject/contracts": "npm:^5.7.0"
+    "@ethersproject/providers": "npm:^5.7.0"
+    "@ethersproject/wallet": "npm:^5.7.0"
+    "@metamask/accounts-controller": "npm:^35.0.0"
+    "@metamask/approval-controller": "npm:^8.0.0"
+    "@metamask/base-controller": "npm:^9.0.0"
+    "@metamask/controller-utils": "npm:^11.16.0"
+    "@metamask/eth-query": "npm:^4.0.0"
+    "@metamask/gas-fee-controller": "npm:^26.0.0"
+    "@metamask/messenger": "npm:^0.3.0"
+    "@metamask/metamask-eth-abis": "npm:^3.1.1"
+    "@metamask/network-controller": "npm:^27.0.0"
+    "@metamask/nonce-tracker": "npm:^6.0.0"
+    "@metamask/remote-feature-flag-controller": "npm:^3.0.0"
+    "@metamask/rpc-errors": "npm:^7.0.2"
+    "@metamask/utils": "npm:^11.8.1"
+    async-mutex: "npm:^0.5.0"
+    bignumber.js: "npm:^9.1.2"
+    bn.js: "npm:^5.2.1"
+    eth-method-registry: "npm:^4.0.0"
+    fast-json-patch: "npm:^3.1.1"
+    lodash: "npm:^4.17.21"
+    uuid: "npm:^8.3.2"
+  peerDependencies:
+    "@babel/runtime": ^7.0.0
+    "@metamask/eth-block-tracker": ">=9"
+  checksum: 10/fe07b5013381b3410dafcc03f93bfae3c378cb1742f01788486adff1b4a4a3a5c31be8b91bf9220f247786b7bec6078271c8a0a03b156f51c9c9b5e51fba5829
   languageName: node
   linkType: hard
 
@@ -35999,7 +36050,7 @@ __metadata:
     "@metamask/ethjs-unit": "npm:^0.3.0"
     "@metamask/foundryup": "npm:1.0.0"
     "@metamask/gas-fee-controller": "npm:^25.0.0"
-    "@metamask/gator-permissions-controller": "npm:^0.3.0"
+    "@metamask/gator-permissions-controller": "npm:^0.7.0"
     "@metamask/json-rpc-engine": "npm:^10.2.0"
     "@metamask/json-rpc-middleware-stream": "npm:^8.0.7"
     "@metamask/key-tree": "npm:^10.1.1"
