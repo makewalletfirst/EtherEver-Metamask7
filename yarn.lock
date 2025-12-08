@@ -9340,17 +9340,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@metamask/react-native-payments@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "@metamask/react-native-payments@npm:2.0.0"
+"@metamask/react-native-payments@npm:^2.0.2":
+  version: 2.0.2
+  resolution: "@metamask/react-native-payments@npm:2.0.2"
   dependencies:
     es6-error: "npm:^4.0.2"
     uuid: "npm:3.3.2"
-    validator: "npm:^7.0.0"
   peerDependencies:
     react: ">=15"
     react-native: ">=0.41"
-  checksum: 10/48d7f9d5a8bfd8f7ffd72881138893b0415e136dd0af65587b59ccfbb0573cfe27026d19b7d8bfe4cf1d50c37bba64a198b937f6a29d0bd749ecd0c9a79427e5
+  checksum: 10/f1b4cc3de0dc4bd61cfcda78704badf21851e6ca192a94510cc6700f258305b57313f30086b9229b800ecc1c56d63f880dbbe4d688fc6df2ac7ccbb801ea951a
   languageName: node
   linkType: hard
 
@@ -36035,7 +36034,7 @@ __metadata:
     "@metamask/react-native-acm": "npm:^1.0.1"
     "@metamask/react-native-actionsheet": "npm:2.4.2"
     "@metamask/react-native-button": "npm:^3.0.0"
-    "@metamask/react-native-payments": "npm:^2.0.0"
+    "@metamask/react-native-payments": "npm:^2.0.2"
     "@metamask/react-native-search-api": "npm:1.0.1"
     "@metamask/react-native-webview": "patch:@metamask/react-native-webview@npm%3A14.5.0#~/.yarn/patches/@metamask-react-native-webview-npm-14.5.0-b34fed6d50.patch"
     "@metamask/remote-feature-flag-controller": "npm:^2.0.0"
@@ -46895,7 +46894,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"validator@npm:^13.0.0, validator@npm:^13.7.0":
+"validator@npm:^13.0.0":
   version: 13.7.0
   resolution: "validator@npm:13.7.0"
   checksum: 10/c317ec88358a170d9fe3fa47e7f5367b37f41791a5460227aaaa11580c3c9bd27f16b8e0ce47d558e2d7ab318d7ad4d3980f05e2509f0fdc9f89b2e2ae860150
